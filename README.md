@@ -1,10 +1,11 @@
-# helm3-s3-secrets
+# helm3-ci
 
-Small Alpine Docker image with Helm3, helm-secrets and helm-s3 plugins.
+Small Alpine Docker image with kubeval, Helm3, helm-secrets, helm-s3 and helm-unittest plugins for Continous Integration.
+
 
 ## Docker Hub
 
-[ventx/helm3-secrets-s3](https://cloud.docker.com/u/ventx/repository/docker/ventx/helm3-secrets-s3)
+[ventx/helm3-ci](https://cloud.docker.com/u/ventx/repository/docker/ventx/helm3-ci)
 
 
 # Docker image
@@ -23,11 +24,13 @@ Small Alpine Docker image with Helm3, helm-secrets and helm-s3 plugins.
 
 # Installed Packages (go binaries)
 
-* [helm|](https://helm.sh/) `v3.2.0`
+* [helm](https://helm.sh/) `v3.2.0`
+* [kubeval](https://www.kubeval.com/) `0.15.0`
 
 
 # Helm Plugins
 
 * [helm-secrets](https://github.com/zendesk/helm-secrets) `2.0.2`
 * [helm-s3](https://github.com/hypnoglow/helm-s3) `0.9.2`
+* [helm-unittest](https://github.com/rancher/helm-unittest) `v0.1.7-rancher1`
 
