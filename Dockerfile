@@ -2,7 +2,7 @@ FROM alpine:3.11
 LABEL maintainer="hajo@ventx.de"
 
 ENV HELM v3.2.0
-ENV HELM_S3 0.9.2
+ENV HELM_PUSH v0.8.1
 ENV HELM_SECRETS 2.0.2
 ENV HELM_UNITTEST v0.1.7-rancher1
 ENV KUBEVAL 0.15.0
@@ -19,7 +19,7 @@ RUN wget -qO- https://get.helm.sh/helm-${HELM}-linux-amd64.tar.gz | tar -xzO lin
 
 
 # Install Helm plugin
-RUN helm plugin install https://github.com/hypnoglow/helm-s3.git --version ${HELM_S3} 
+RUN helm plugin install https://github.com/chartmuseum/helm-push.git --version ${HELM_PUSH}
 RUN helm plugin install https://github.com/futuresimple/helm-secrets --version ${HELM_SECRETS} 
 RUN helm plugin install https://github.com/rancher/helm-unittest --version ${HELM_UNITTEST} 
 

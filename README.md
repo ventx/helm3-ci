@@ -1,6 +1,6 @@
 # helm3-ci
 
-Small Alpine Docker image with kubeval, Helm3, helm-secrets, helm-s3 and helm-unittest plugins for Continous Integration.
+Small Alpine Docker image with kubeval, Helm3, helm-push, helm-secrets and helm-unittest plugins for Continous Integration.
 
 
 ## Docker Hub
@@ -31,6 +31,6 @@ Small Alpine Docker image with kubeval, Helm3, helm-secrets, helm-s3 and helm-un
 # Helm Plugins
 
 * [helm-secrets](https://github.com/zendesk/helm-secrets) `2.0.2`
-* [helm-s3](https://github.com/hypnoglow/helm-s3) `0.9.2`
+* [helm-push](https://github.com/chartmuseum/helm-push) `v0.8.1`
 * [helm-unittest](https://github.com/rancher/helm-unittest) `v0.1.7-rancher1`
 
