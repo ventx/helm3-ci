@@ -1,6 +1,6 @@
 # helm3-ci
 
-Small Alpine Docker image with kubeval, Helm3, helm-push, helm-secrets and helm-unittest plugins for Continous Integration.
+Small Alpine Docker image with `kubeval`, `Helm3`, `helm-push`, `helm-secrets` and `helm-unittest` plugins for **C**ontinous **I**ntegration.
 
 
 ## Docker Hub
