@@ -15,6 +15,7 @@ RUN apk --update --no-cache add \
   bash \
   curl \
   git \
+  make \
   python3 \
   wget
 
