@@ -2,7 +2,7 @@ FROM alpine:3.11
 LABEL maintainer="hajo@ventx.de"
 
 ENV CT 3.0.0-rc.1
-ENV HELM v3.2.0
+ENV HELM 3.2.0
 ENV HELM_PUSH 0.8.1
 ENV HELM_SECRETS 2.0.2
 ENV HELM_UNITTEST 0.1.7-rancher1
@@ -19,7 +19,7 @@ RUN apk --update --no-cache add \
   wget
 
 # Helm3
-RUN wget -qO- https://get.helm.sh/helm-${HELM}-linux-amd64.tar.gz | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
+RUN wget -qO- https://get.helm.sh/helm-v${HELM}-linux-amd64.tar.gz | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
   && chmod +x /usr/local/bin/helm
 
 #  Helm plugins
