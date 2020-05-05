@@ -1,6 +1,6 @@
 # helm3-ci
 
-Small Alpine Docker image with `kubeval`, `Helm3`, `helm-push`, `helm-secrets` and `helm-unittest` plugins for **C**ontinous **I**ntegration.
+Small Alpine Docker image with tools and plugins for **C**ontinous **I**ntegration.
 
 
 ## Docker Hub
@@ -19,13 +19,22 @@ Small Alpine Docker image with `kubeval`, `Helm3`, `helm-push`, `helm-secrets` a
 * [bash](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/bash)
 * [curl](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/curl)
 * [git](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/git)
+* [python3](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/python3)
 * [wget](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/wget)
 
 
 # Installed Packages (go binaries)
 
+* [chart-testing](https://github.com/helm/chart-testing) `v3.0.0-rc.1`
 * [helm](https://helm.sh/) `v3.2.0`
-* [kubeval](https://www.kubeval.com/) `0.15.0`
+* [kubeval](https://www.kubeval.com) `0.15.0`
+* [kubectl](https://github.com/kubernetes/kubectl) `1.16.8`
+
+
+# Installed Packages (Python3 - pip)
+
+* [yamale](https://pypi.org/project/yamale/) `2.0.1`
+* [yamllint](https://pypi.org/project/yamllint/) `1.23.0`
 
 
 # Helm Plugins
@@ -33,4 +42,3 @@ Small Alpine Docker image with `kubeval`, `Helm3`, `helm-push`, `helm-secrets` a
 * [helm-secrets](https://github.com/zendesk/helm-secrets) `2.0.2`
 * [helm-push](https://github.com/chartmuseum/helm-push) `v0.8.1`
 * [helm-unittest](https://github.com/rancher/helm-unittest) `v0.1.7-rancher1`
-
