@@ -20,8 +20,8 @@ Small Alpine Docker image with tools and plugins for **C**ontinous **I**ntegrati
 * [curl](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/curl)
 * [git](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/git)
 * [make](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/make)
+* [openssh](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/openssh)
 * [python3](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/python3)
-* [ssh](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/ssh)
 * [wget](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/wget)
 
 

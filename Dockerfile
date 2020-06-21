@@ -16,8 +16,8 @@ RUN apk --update --no-cache add \
   curl \
   git \
   make \
+  openssh \
   python3 \
-  ssh \
   wget
 
 # Helm3
