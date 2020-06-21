@@ -2,13 +2,13 @@ FROM alpine:3.11
 LABEL maintainer="hajo@ventx.de"
 
 ENV CT 3.0.0-rc.1
-ENV HELM 3.2.0
+ENV HELM 3.2.4
 ENV HELM_PUSH 0.8.1
 ENV HELM_SECRETS 2.0.2
 ENV HELM_UNITTEST 0.1.7-rancher1
 ENV KUBEVAL 0.15.0
 ENV KUBECTL 1.16.8
-ENV YAMALE 2.0.1
+ENV YAMALE 2.1.0
 ENV YAMLLINT 1.23.0
 
 RUN apk --update --no-cache add \
@@ -17,6 +17,7 @@ RUN apk --update --no-cache add \
   git \
   make \
   python3 \
+  ssh \
   wget
 
 # Helm3

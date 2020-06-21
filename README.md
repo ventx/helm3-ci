@@ -21,20 +21,21 @@ Small Alpine Docker image with tools and plugins for **C**ontinous **I**ntegrati
 * [git](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/git)
 * [make](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/make)
 * [python3](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/python3)
+* [ssh](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/ssh)
 * [wget](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/wget)
 
 
 # Installed Packages (go binaries)
 
 * [chart-testing](https://github.com/helm/chart-testing) `v3.0.0-rc.1`
-* [helm](https://helm.sh/) `v3.2.0`
+* [helm](https://helm.sh/) `v3.2.4`
 * [kubeval](https://www.kubeval.com) `0.15.0`
 * [kubectl](https://github.com/kubernetes/kubectl) `1.16.8`
 
 
 # Installed Packages (Python3 - pip)
 
-* [yamale](https://pypi.org/project/yamale/) `2.0.1`
+* [yamale](https://pypi.org/project/yamale/) `2.1.0`
 * [yamllint](https://pypi.org/project/yamllint/) `1.23.0`
 
 
