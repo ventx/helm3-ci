@@ -1,6 +1,6 @@
 # helm3-ci
 
-Small Alpine Docker image with tools and plugins for **C**ontinous **I**ntegration.
+Small Alpine Docker image with tools and plugins for Helm charts in **C**ontinous **I**ntegration pipelines.
 
 
 ## Docker Hub
@@ -8,39 +8,37 @@ Small Alpine Docker image with tools and plugins for **C**ontinous **I**ntegrati
 [ventx/helm3-ci](https://cloud.docker.com/u/ventx/repository/docker/ventx/helm3-ci)
 
 
-# Docker image
+# Docker base image
 
-* OS: Alpine
-* Version: 3.11
+* OS: [Alpine Linux](https://alpinelinux.org/)
+* Version: 3.13
 
 
 # Installed Packages
 
-* [bash](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/bash)
-* [curl](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/curl)
-* [git](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/git)
-* [make](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/make)
-* [openssh](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/openssh)
-* [python3](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/python3)
-* [wget](https://pkgs.alpinelinux.org/package/v3.11/community/x86_64/wget)
+* [bash](https://pkgs.alpinelinux.org/packages?name=bash&branch=v3.13)
+* [curl](https://pkgs.alpinelinux.org/packages?name=curl&branch=v3.13)
+* [git](https://pkgs.alpinelinux.org/packages?name=git&branch=v3.13)
+* [make](https://pkgs.alpinelinux.org/packages?name=make&branch=v3.13)
+* [openssh-client](https://pkgs.alpinelinux.org/packages?name=openssh-client&branch=v3.13)
+* [python3](https://pkgs.alpinelinux.org/packages?name=python3&branch=v3.13)
+* [py3-pip](https://pkgs.alpinelinux.org/packages?name=py3-pip&branch=v3.13)
 
 
 # Installed Packages (go binaries)
 
-* [chart-testing](https://github.com/helm/chart-testing) `v3.0.0-rc.1`
-* [helm](https://helm.sh/) `v3.2.4`
-* [kubeval](https://www.kubeval.com) `0.15.0`
-* [kubectl](https://github.com/kubernetes/kubectl) `1.16.8`
-
+* [chart-testing](https://github.com/helm/chart-testing) `v3.3.1`
+* [helm](https://helm.sh/) `v3.5.4`
+* [kubeval](https://www.kubeval.com) `v0.16.1`
+* [kubectl](https://github.com/kubernetes/kubectl) `v1.19.6`
 
 # Installed Packages (Python3 - pip)
 
-* [yamale](https://pypi.org/project/yamale/) `2.1.0`
-* [yamllint](https://pypi.org/project/yamllint/) `1.23.0`
+* [yamale](https://pypi.org/project/yamale/) `3.0.4`
+* [yamllint](https://pypi.org/project/yamllint/) `1.26.1`
 
 
 # Helm Plugins
 
-* [helm-secrets](https://github.com/zendesk/helm-secrets) `2.0.2`
-* [helm-push](https://github.com/chartmuseum/helm-push) `v0.8.1`
-* [helm-unittest](https://github.com/rancher/helm-unittest) `v0.1.7-rancher1`
+* [helm-secrets](https://github.com/jkroepke/helm-secrets) `v3.6.1`
+* [helm-unittest](https://github.com/quintush/helm-unittest) `v0.2.6`
