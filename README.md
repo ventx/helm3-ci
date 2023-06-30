@@ -7,7 +7,7 @@ Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**nt
 
 ## Docker Hub
 
-[ventx/helm3-ci:0.7.0](https://hub.docker.com/r/ventx/helm3-ci) <!-- {x-release-please-version} -->
+[ventx/helm3-ci:2.0.0](https://hub.docker.com/r/ventx/helm3-ci) <!-- {x-release-please-version} -->
 
 
 ## Docker image
