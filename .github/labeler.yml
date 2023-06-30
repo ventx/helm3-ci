@@ -1,0 +1,6 @@
+documentation:
+  - ./*.md
+
+ci:
+  - .dependabot/*
+  - .github/*

@@ -1,0 +1,19 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    name: release-please
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          extra-files: |
+            README.md
+          include-v-in-tag: false
+          release-type: simple
+          token: ${{ secrets.PAT_RELEASE_PLEASE }}
