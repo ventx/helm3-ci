@@ -31,7 +31,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           flavor: latest=true
-          images: ventx/debug-pod
+          images: ventx/helm3-ci
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3

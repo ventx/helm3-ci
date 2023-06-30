@@ -1,6 +1,6 @@
 # helm3-ci
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/ventx/helm3-ci.svg)](https://hub.docker.com/r/ventx/debug-pod/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/ventx/helm3-ci.svg)](https://hub.docker.com/r/ventx/helm3-ci/)
 
 Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**ntegration pipelines.
 
