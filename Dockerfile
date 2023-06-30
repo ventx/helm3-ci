@@ -32,6 +32,9 @@ ENV TZ="Europe/Berlin"
 ENV YAMALE="4.0.4"
 ENV YAMLLINT="1.32.0"
 
+# hadolint: DL4006
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Instal packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
   tzdata=2023c-0ubuntu0.22.04.2 \
@@ -60,21 +63,21 @@ RUN pip3 install --no-cache-dir \
 
 # Helm3
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-    curl -SsL "https://get.helm.sh/helm-v${HELM}-linux-${ARCHITECTURE}.tar.gz" | tar -xzO linux-${ARCHITECTURE}/helm > /usr/local/bin/helm && \
+    curl -SsL "https://get.helm.sh/helm-v${HELM}-linux-${ARCHITECTURE}.tar.gz" | tar -xzO "linux-${ARCHITECTURE}/helm" > /usr/local/bin/helm && \
     chmod +x /usr/local/bin/helm
 
 #  Helm plugins
-RUN helm plugin install https://github.com/jkroepke/helm-secrets --version "v${HELM_SECRETS}"
-RUN helm plugin install https://github.com/helm-unittest/helm-unittest --version "v${HELM_UNITTEST}"
+RUN helm plugin install https://github.com/jkroepke/helm-secrets --version "v${HELM_SECRETS}" && \
+    helm plugin install https://github.com/helm-unittest/helm-unittest --version "v${HELM_UNITTEST}"
 
 # chart-testing
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-    curl -sLS https://github.com/helm/chart-testing/releases/download/v${CT}/chart-testing_${CT}_linux_${ARCHITECTURE}.tar.gz | tar -xzO ct > /usr/local/bin/ct && \
+    curl -sLS "https://github.com/helm/chart-testing/releases/download/v${CT}/chart-testing_${CT}_linux_${ARCHITECTURE}.tar.gz" | tar -xzO ct > /usr/local/bin/ct && \
     chmod +x /usr/local/bin/ct
 
 # kubectl
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=linux/amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=linux/arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-  curl -sLS -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL}/bin/${ARCHITECTURE}/kubectl && \
+  curl -sLS -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL}/bin/${ARCHITECTURE}/kubectl" && \
   chmod +x /usr/local/bin/kubectl
 
 # kube-score
@@ -89,7 +92,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$
 
 # kubeconform
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-    curl -sLS https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM}/kubeconform-linux-${ARCHITECTURE}.tar.gz | tar -xzO kubeconform > /usr/local/bin/kubeconform && \
+    curl -sLS "https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM}/kubeconform-linux-${ARCHITECTURE}.tar.gz" | tar -xzO kubeconform > /usr/local/bin/kubeconform && \
     chmod +x /usr/local/bin/kubeconform
 
 WORKDIR /work
