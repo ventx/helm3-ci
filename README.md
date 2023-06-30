@@ -4,6 +4,7 @@
 
 Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**ntegration pipelines.
 
+
 ## Docker Hub
 
 [ventx/helm3-ci:0.7.0](https://hub.docker.com/r/ventx/helm3-ci) <!-- {x-release-please-version} -->
@@ -14,10 +15,12 @@ Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**nt
 * OS: Ubuntu
 * Version: 22.04 LTS ("Jammy")
 
+
 ## Architectures
 
 * linux/amd64
 * linux/arm64
+
 
 ## Installed Packages (apt)
 
@@ -39,6 +42,7 @@ Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**nt
 * [helm](https://helm.sh/)
 * [kubeval](https://www.kubeval.com)
 * [kubectl](https://github.com/kubernetes/kubectl)
+
 
 # Installed Packages (Python3 - pip)
 
