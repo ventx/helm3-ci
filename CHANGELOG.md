@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/ventx/helm3-ci/compare/2.0.0...2.1.0) (2023-07-04)
+
+
+### Features
+
+* add kubernetes-schema JSON files locally for air-gapped environments, based on KUBECTL version ([d2a26ba](https://github.com/ventx/helm3-ci/commit/d2a26ba1fa5c9ef8dd0f8fbfbafa52dc8b547484))
+
 ## [2.0.0](https://github.com/ventx/helm3-ci/compare/1.1.0...2.0.0) (2023-06-30)
 
 
