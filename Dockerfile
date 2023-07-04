@@ -95,6 +95,11 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$
     curl -sLS "https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM}/kubeconform-linux-${ARCHITECTURE}.tar.gz" | tar -xzO kubeconform > /usr/local/bin/kubeconform && \
     chmod +x /usr/local/bin/kubeconform
 
+# kubernetes-json-schema
+RUN git clone --depth 1 --branch master --no-checkout https://github.com/yannh/kubernetes-json-schema.git && \
+    cd kubernetes-json-schema && git sparse-checkout set v${KUBECTL}-standalone-strict && git checkout master && \
+    mkdir -p /schema && cp -r v${KUBECTL}-standalone-strict /schema/ && cd .. && rm -rf kubernetes-json-schema
+    
 WORKDIR /work
 
 CMD ["helm", "version"]
