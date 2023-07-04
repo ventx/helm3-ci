@@ -4,4 +4,4 @@ repos:
     hooks:
       - id: hadolint
         args:
-          - --ignore DL3003
+          - "--ignore DL3003"
