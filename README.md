@@ -40,6 +40,7 @@ Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**nt
 
 * [chart-testing](https://github.com/helm/chart-testing)
 * [helm](https://helm.sh/)
+* [helm-docs](https://github.com/norwoodj/helm-docs)
 * [kubeval](https://www.kubeval.com)
 * [kubectl](https://github.com/kubernetes/kubectl)
 
