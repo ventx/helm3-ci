@@ -104,7 +104,7 @@ RUN git clone --depth 1 --branch master --no-checkout https://github.com/yannh/k
 # helm-docs
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x86_64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
     curl -sLS "https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS}/helm-docs_1.11.0_Linux_${ARCHITECTURE}.tar.gz" | tar -xzO helm-docs > /usr/local/bin/helm-docs && \
-    chmod +x /usr/local/bin/kubesec
+    chmod +x /usr/local/bin/helm-docs
 
 WORKDIR /work
 
