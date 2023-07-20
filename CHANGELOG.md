@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/ventx/helm3-ci/compare/2.1.0...2.2.0) (2023-07-20)
+
+
+### Features
+
+* add helm-docs and version bump of apt packages ([ca8ab15](https://github.com/ventx/helm3-ci/commit/ca8ab15bac8931b81b1652c4fc228de6d0e4a4c3))
+
 ## [2.1.0](https://github.com/ventx/helm3-ci/compare/2.0.0...2.1.0) (2023-07-04)
 
 
