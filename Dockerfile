@@ -22,6 +22,7 @@ LABEL maintainer="Hans Jörg Wieland <hajo@ventx.de>" \
 ENV CT 3.8.0
 ENV DEBIAN_FRONTEND="noninteractive"
 ENV HELM="3.12.1"
+ENV HELM_DOCS="1.11.0"
 ENV HELM_SECRETS="4.4.2"
 ENV HELM_UNITTEST="0.3.3"
 ENV KUBECTL="1.25.11"
@@ -39,7 +40,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && apt-get install -y --no-install-recommends \
   tzdata=2023c-0ubuntu0.22.04.2 \
   ca-certificates=20230311ubuntu0.22.04.1 \
-  curl=7.81.0-1ubuntu1.10 \
+  curl=7.81.0-1ubuntu1.13 \
   git=1:2.34.1-1ubuntu1.9 \
   gnupg=2.2.27-3ubuntu2.1 \
   jq=1.6-2.1ubuntu3 \
@@ -99,7 +100,12 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$
 RUN git clone --depth 1 --branch master --no-checkout https://github.com/yannh/kubernetes-json-schema.git && \
     cd kubernetes-json-schema && git sparse-checkout set v${KUBECTL}-standalone-strict && git checkout master && \
     mkdir -p /schema && cp -r v${KUBECTL}-standalone-strict /schema/ && cd .. && rm -rf kubernetes-json-schema
-    
+
+# helm-docs
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x86_64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+    curl -sLS "https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS}/helm-docs_1.11.0_Linux_${ARCHITECTURE}.tar.gz" | tar -xzO helm-docs > /usr/local/bin/helm-docs && \
+    chmod +x /usr/local/bin/kubesec
+
 WORKDIR /work
 
 CMD ["helm", "version"]
