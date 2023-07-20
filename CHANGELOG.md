@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/ventx/helm3-ci/compare/2.2.0...2.2.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* set helm-docs binary executable ([9710f85](https://github.com/ventx/helm3-ci/commit/9710f859f7a7bb30feef860352143c1afdbff787))
+
 ## [2.2.0](https://github.com/ventx/helm3-ci/compare/2.1.0...2.2.0) (2023-07-20)
 
 
