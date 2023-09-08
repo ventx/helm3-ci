@@ -43,6 +43,8 @@ Multi-Arch image with tools and plugins for Helm Charts in **C**ontinous **I**nt
 * [helm-docs](https://github.com/norwoodj/helm-docs)
 * [kubeval](https://www.kubeval.com)
 * [kubectl](https://github.com/kubernetes/kubectl)
+* [kustomize](https://github.com/kubernetes-sigs/kustomize)
+* [yq](https://github.com/mikefarah/yq)
 
 
 # Installed Packages (Python3 - pip)
