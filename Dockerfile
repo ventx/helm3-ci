@@ -21,17 +21,19 @@ LABEL maintainer="Hans Jörg Wieland <hajo@ventx.de>" \
 # Tool versions
 ENV CT 3.8.0
 ENV DEBIAN_FRONTEND="noninteractive"
-ENV HELM="3.12.1"
+ENV HELM="3.12.3"
 ENV HELM_DOCS="1.11.0"
-ENV HELM_SECRETS="4.4.2"
-ENV HELM_UNITTEST="0.3.3"
+ENV HELM_SECRETS="4.5.0"
+ENV HELM_UNITTEST="0.3.4"
 ENV KUBECTL="1.25.11"
-ENV KUBESCORE="1.16.1"
+ENV KUBESCORE="1.17.0"
 ENV KUBESEC="2.13.0"
-ENV KUBECONFORM="0.6.2"
+ENV KUBECONFORM="0.6.3"
+ENV KUSTOMIZE="5.1.1"
 ENV TZ="Europe/Berlin"
 ENV YAMALE="4.0.4"
 ENV YAMLLINT="1.32.0"
+ENV YQ="4.35.1"
 
 # hadolint: DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -41,11 +43,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   tzdata=2023c-0ubuntu0.22.04.2 \
   ca-certificates=20230311ubuntu0.22.04.1 \
   curl=7.81.0-1ubuntu1.13 \
-  git=1:2.34.1-1ubuntu1.9 \
+  git=1:2.34.1-1ubuntu1.10 \
   gnupg=2.2.27-3ubuntu2.1 \
   jq=1.6-2.1ubuntu3 \
   make=4.3-4.1build1 \
-  openssh-client=1:8.9p1-3ubuntu0.1 \
+  openssh-client=1:8.9p1-3ubuntu0.3 \
   python3-pip=22.0.2+dfsg-1ubuntu0.3 \
   wget=1.21.2-2ubuntu1 \
   && rm -rf /var/lib/apt/lists/*
@@ -96,15 +98,20 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$
     curl -sLS "https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM}/kubeconform-linux-${ARCHITECTURE}.tar.gz" | tar -xzO kubeconform > /usr/local/bin/kubeconform && \
     chmod +x /usr/local/bin/kubeconform
 
-# kubernetes-json-schema
-RUN git clone --depth 1 --branch master --no-checkout https://github.com/yannh/kubernetes-json-schema.git && \
-    cd kubernetes-json-schema && git sparse-checkout set v${KUBECTL}-standalone-strict && git checkout master && \
-    mkdir -p /schema && cp -r v${KUBECTL}-standalone-strict /schema/ && cd .. && rm -rf kubernetes-json-schema
-
 # helm-docs
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x86_64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
     curl -sLS "https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS}/helm-docs_1.11.0_Linux_${ARCHITECTURE}.tar.gz" | tar -xzO helm-docs > /usr/local/bin/helm-docs && \
     chmod +x /usr/local/bin/helm-docs
+
+# kustomize
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCHITECTURE=amd64; fi && \
+  curl -sLS "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE}/kustomize_v${KUSTOMIZE}_linux_${ARCHITECTURE}.tar.gz" | tar -xzO kustomize > /usr/local/bin/kustomize && \
+  chmod +x /usr/local/bin/kustomize
+
+# yq
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCHITECTURE=amd64; fi && \
+  curl -SsL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v${YQ}/yq_linux_${ARCHITECTURE} && \
+  chmod +x /usr/local/bin/yq
 
 WORKDIR /work
 
