@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/ventx/helm3-ci/compare/2.2.1...2.3.0) (2023-09-08)
+
+
+### Features
+
+* add yq, kustomize, version bump of all packages, removed schema for decrease overall image size ([bcd1e15](https://github.com/ventx/helm3-ci/commit/bcd1e154ab8b04d355b1231d29e39f487ad34dd7))
+
 ## [2.2.1](https://github.com/ventx/helm3-ci/compare/2.2.0...2.2.1) (2023-07-20)
 
 
