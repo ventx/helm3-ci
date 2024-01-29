@@ -66,7 +66,7 @@ RUN pip3 install --no-cache-dir \
 
 # Helm3
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-    curl -SsL "https://get.helm.sh/helm-v${HELM}-linux-${ARCHITECTURE}.tar.gz" | tar -xzO "linux-${ARCHITECTURE}/helm" > /usr/local/bin/helm && \
+    curl -sLS "https://get.helm.sh/helm-v${HELM}-linux-${ARCHITECTURE}.tar.gz" | tar -xzO "linux-${ARCHITECTURE}/helm" > /usr/local/bin/helm && \
     chmod +x /usr/local/bin/helm
 
 #  Helm plugins
@@ -110,7 +110,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$
 
 # yq
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCHITECTURE=amd64; fi && \
-  curl -SsL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v${YQ}/yq_linux_${ARCHITECTURE} && \
+  curl -sLS -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v${YQ}/yq_linux_${ARCHITECTURE} && \
   chmod +x /usr/local/bin/yq
 
 WORKDIR /work
