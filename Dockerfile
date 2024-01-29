@@ -40,15 +40,15 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Instal packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  tzdata=2023c-0ubuntu0.22.04.2 \
+  tzdata=2023d-0ubuntu0.22.04 \
   ca-certificates=20230311ubuntu0.22.04.1 \
-  curl=7.81.0-1ubuntu1.13 \
+  curl=7.81.0-1ubuntu1.15 \
   git=1:2.34.1-1ubuntu1.10 \
   gnupg=2.2.27-3ubuntu2.1 \
   jq=1.6-2.1ubuntu3 \
   make=4.3-4.1build1 \
-  openssh-client=1:8.9p1-3ubuntu0.3 \
-  python3-pip=22.0.2+dfsg-1ubuntu0.3 \
+  openssh-client=1:8.9p1-3ubuntu0.6 \
+  python3-pip=22.0.2+dfsg-1ubuntu0.4 \
   wget=1.21.2-2ubuntu1 \
   && rm -rf /var/lib/apt/lists/*
 
