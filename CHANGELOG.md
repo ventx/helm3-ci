@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.4.0](https://github.com/ventx/helm3-ci/compare/2.3.0...2.4.0) (2024-01-29)
+
+
+### Features
+
+* add chart-testing default configs to /etc/ct so no explicit config needs to be provided ([121ca50](https://github.com/ventx/helm3-ci/commit/121ca50675a412679891757e03ad8776066382e3))
+* version bump of all apt packages ([a991a0c](https://github.com/ventx/helm3-ci/commit/a991a0cc6b86015d0c137819ab3dae04489cda53))
+
+
+### Bug Fixes
+
+* chart-testing config files extraction and cleanup /tmp afterwards ([80133d4](https://github.com/ventx/helm3-ci/commit/80133d475680616cb647a13bea595b7e667fdfe3))
+
 ## [2.3.0](https://github.com/ventx/helm3-ci/compare/2.2.1...2.3.0) (2023-09-08)
 
 
