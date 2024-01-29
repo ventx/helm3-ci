@@ -19,21 +19,21 @@ LABEL maintainer="Hans Jörg Wieland <hajo@ventx.de>" \
       org.opencontainers.image.vendor="ventx GmbH"
 
 # Tool versions
-ENV CT 3.8.0
+ENV CT="3.10.1"
 ENV DEBIAN_FRONTEND="noninteractive"
-ENV HELM="3.12.3"
-ENV HELM_DOCS="1.11.0"
-ENV HELM_SECRETS="4.5.0"
-ENV HELM_UNITTEST="0.3.4"
-ENV KUBECTL="1.25.11"
+ENV HELM="3.14.0"
+ENV HELM_DOCS="1.12.0"
+ENV HELM_SECRETS="4.5.1"
+ENV HELM_UNITTEST="0.4.1"
+ENV KUBECTL="1.27.10"
 ENV KUBESCORE="1.17.0"
-ENV KUBESEC="2.13.0"
-ENV KUBECONFORM="0.6.3"
-ENV KUSTOMIZE="5.1.1"
+ENV KUBESEC="2.14.0"
+ENV KUBECONFORM="0.6.4"
+ENV KUSTOMIZE="5.3.0"
 ENV TZ="Europe/Berlin"
 ENV YAMALE="4.0.4"
-ENV YAMLLINT="1.32.0"
-ENV YQ="4.35.1"
+ENV YAMLLINT="1.33.0"
+ENV YQ="4.40.5"
 
 # hadolint: DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -65,7 +65,7 @@ RUN pip3 install --no-cache-dir \
     yamllint=="${YAMLLINT}"
 
 # Helm3
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architecture" && exit 1; fi && \
     curl -sLS "https://get.helm.sh/helm-v${HELM}-linux-${ARCHITECTURE}.tar.gz" | tar -xzO "linux-${ARCHITECTURE}/helm" > /usr/local/bin/helm && \
     chmod +x /usr/local/bin/helm
 
@@ -74,34 +74,34 @@ RUN helm plugin install https://github.com/jkroepke/helm-secrets --version "v${H
     helm plugin install https://github.com/helm-unittest/helm-unittest --version "v${HELM_UNITTEST}"
 
 # chart-testing
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architecture" && exit 1; fi && \
     curl -sLS "https://github.com/helm/chart-testing/releases/download/v${CT}/chart-testing_${CT}_linux_${ARCHITECTURE}.tar.gz" > /tmp/ct.tar.gz && \
     tar -xzf /tmp/ct.tar.gz -C /tmp/ && mv /tmp/ct /usr/local/bin/ct && chmod a+x /usr/local/bin/ct && mkdir /etc/ct && cp /tmp/etc/* /etc/ct/ && \
     rm -rf /tmp/*
 
 # kubectl
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=linux/amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=linux/arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=linux/amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=linux/arm64; else echo "Unsupported Architecture" && exit 1; fi && \
   curl -sLS -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL}/bin/${ARCHITECTURE}/kubectl" && \
   chmod +x /usr/local/bin/kubectl
 
 # kube-score
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architecture" && exit 1; fi && \
     curl -sLS "https://github.com/zegl/kube-score/releases/download/v${KUBESCORE}/kube-score_${KUBESCORE}_linux_${ARCHITECTURE}" > /usr/local/bin/kube-score && \
     chmod +x /usr/local/bin/kube-score
 
 # kubesec
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architecture" && exit 1; fi && \
     curl -sLS "https://github.com/controlplaneio/kubesec/releases/download/v${KUBESEC}/kubesec_linux_${ARCHITECTURE}.tar.gz" | tar -xzO kubesec > /usr/local/bin/kubesec && \
     chmod +x /usr/local/bin/kubesec
 
 # kubeconform
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architecture" && exit 1; fi && \
     curl -sLS "https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM}/kubeconform-linux-${ARCHITECTURE}.tar.gz" | tar -xzO kubeconform > /usr/local/bin/kubeconform && \
     chmod +x /usr/local/bin/kubeconform
 
 # helm-docs
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x86_64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-    curl -sLS "https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS}/helm-docs_1.11.0_Linux_${ARCHITECTURE}.tar.gz" | tar -xzO helm-docs > /usr/local/bin/helm-docs && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x86_64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architecture" && exit 1; fi && \
+    curl -sLS "https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS}/helm-docs_${HELM_DOCS}_Linux_${ARCHITECTURE}.tar.gz" | tar -xzO helm-docs > /usr/local/bin/helm-docs && \
     chmod +x /usr/local/bin/helm-docs
 
 # kustomize
