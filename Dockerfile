@@ -75,8 +75,9 @@ RUN helm plugin install https://github.com/jkroepke/helm-secrets --version "v${H
 
 # chart-testing
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else echo "Unsupported Architeture" && exit 1; fi && \
-    curl -sLS "https://github.com/helm/chart-testing/releases/download/v${CT}/chart-testing_${CT}_linux_${ARCHITECTURE}.tar.gz" > ct.tar.gz && \
-    tar -xzf ct.tar.gz && mv ct /usr/local/bin/ct && chmod a+x /usr/local/bin/ct && mkdir /etc/ct && cp etc/* /etc/ct
+    curl -sLS "https://github.com/helm/chart-testing/releases/download/v${CT}/chart-testing_${CT}_linux_${ARCHITECTURE}.tar.gz" > /tmp/ct.tar.gz && \
+    tar -xzf /tmp/ct.tar.gz -C /tmp/ && mv /tmp/ct /usr/local/bin/ct && chmod a+x /usr/local/bin/ct && mkdir /etc/ct && cp /tmp/etc/* /etc/ct/ && \
+    rm -rf /tmp/*
 
 # kubectl
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=linux/amd64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=linux/arm64; else echo "Unsupported Architeture" && exit 1; fi && \
