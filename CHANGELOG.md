@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/ventx/helm3-ci/compare/2.4.0...2.5.0) (2024-01-29)
+
+
+### Features
+
+* version bump of all tools ([10df900](https://github.com/ventx/helm3-ci/commit/10df90006a394418805443ac9e80765db760d777))
+
 ## [2.4.0](https://github.com/ventx/helm3-ci/compare/2.3.0...2.4.0) (2024-01-29)
 
 
